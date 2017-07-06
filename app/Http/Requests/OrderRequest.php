@@ -28,7 +28,7 @@ class OrderRequest extends FormRequest
             'districts' => 'required',
             'wards' => 'required',
             'name' => 'required|string|max:255',
-            'phone' => 'required|',
+            'phone' => 'required|numeric',
             'note' => 'string|max:255',
         ];
     }
