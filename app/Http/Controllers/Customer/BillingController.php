@@ -30,8 +30,8 @@ class BillingController extends Controller
             'note' => $request->note,
         ]);
 
-        $job = (new SendMail($request->email))->delay(Carbon::now()->addSeconds(5));
-        dispatch($job);
+        // $job = (new SendMail($request->email))->delay(Carbon::now()->addSeconds(5));
+        // dispatch($job);
         //     $info = Cart::content();
         //     Mail::send('welcome', [], function ($message) {
         //     $message->from('lashop1221@gmail.com')->subject('Orders');

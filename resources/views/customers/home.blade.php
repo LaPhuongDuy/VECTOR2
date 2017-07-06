@@ -42,6 +42,7 @@
 </div>
 <!-- Featured Slider -->
 @include('customers.components.feature-slider')
+
     <div>
         {{$provinces}}
     </div>
@@ -49,7 +50,9 @@
 <!-- End Featured Slider --> 
 @endsection
 @push('scripts')
+
 {!! Html::script('assets/plugins/toastr/toastr.min.js') !!}
+
     <script type="text/javascript">
         $('.form-add').submit(function (e){
             e.preventDefault();

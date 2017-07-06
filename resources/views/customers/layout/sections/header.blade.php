@@ -126,9 +126,21 @@
                         <input class="title_shopping_cart" value="Go to shopping cart" type="hidden">
                     </div>
                 </div>
-                <div class="signup"><a title="Login" href="login.html"><span>Sign up Now</span></a></div>
+                @if(Auth::check())
+                    <div class="signup"><a title="Login" href=""><span>{{ Auth::user()->name }}</span></a></div>
+                    <span class="or"> | </span>
+                    <div class="login">
+                        <a title="Login" href="#" onclick="document.getElementById('logout-form').submit();">
+                            <span>Log Out</span>
+                        </a>
+                    </div>
+                    {{ Form::open(['route' => 'logout', 'id' => 'logout-form', 'style' => 'display: none;']) }}
+                    {{ Form::close() }}
+                @else
+                <div class="signup"><a title="Login" href="{{ route('register') }}"><span>Sign up Now</span></a></div>
                 <span class="or"> | </span>
-                <div class="login"><a title="Login" href="login.html"><span>Log In</span></a></div>
+                <div class="login"><a title="Login" href="{{ route('login') }}"><span>Log In</span></a></div>
+                @endif
             </div>
             <!-- End Top Cart --> 
         </div>
