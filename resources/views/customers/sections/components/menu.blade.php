@@ -32,27 +32,23 @@
                         </ul>
                         <div class="nav-add">
                             <div class="push_item1">
-                                <div class="push_img"><a href="#"> <img alt="women jwellery"
-                                                                        src="assets/images/women-cate-banner.jpg"> </a>
+                                <div class="push_img"><a href="#"> <img alt="women jwellery" src="{{ asset('assets/images/women-cate-banner.jpg') }}"> </a>
                                 </div>
                             </div>
                             <div class="push_item1">
-                                <div class="push_img"><a href="#"> <img alt="women_jwellery"
-                                                                        src="assets/images/women-cate-banner1.jpg"> </a>
+                                <div class="push_img"><a href="#"> <img alt="women_jwellery" src="{{ asset('assets/images/women-cate-banner1.jpg') }}"> </a>
                                 </div>
                             </div>
 
                             <div class="push_item1 push_item1_last">
-                                <div class="push_img"><a href="#"> <img alt="women_bag"
-                                                                        src="assets/images/women-cate-banner2.jpg"> </a>
+                                <div class="push_img"><a href="#"> <img alt="women_bag" src="{{ asset('assets/images/women-cate-banner2.jpg') }}"> </a>
                                 </div>
                             </div>
                             <br class="clear">
                         </div>
                     </div>
                     <div class="nav-block nav-block-right std grid12-4">
-                        <p><a href="#"><img class="fade-on-hover" src="assets/images/nav-women-banner.jpg"
-                                            alt="nav img"></a></p>
+                        <p><a href="#"><img class="fade-on-hover" src="{{ asset('assets/images/nav-women-banner.jpg') }}" alt="nav img"></a></p>
                     </div>
                 </div>
             </div>

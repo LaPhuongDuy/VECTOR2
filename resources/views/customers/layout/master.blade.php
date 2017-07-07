@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
+        <meta name="base-url" content="{{ url('/') }}">
         @yield('title')
         <!-- Favicons Icon -->
         {!! Html::favicon('http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico') !!}
@@ -112,6 +113,7 @@
             }
         });
     </script>
+    {!! Html::script('assets/js/app.js') !!}
     @stack('scripts')
 </body>
 </html>
