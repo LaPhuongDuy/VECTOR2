@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('customers.master');
+    return view('customers.layout.master');
 })->name('home');
 
 Route::group(['middleware' => 'web'], function () {
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin' ], function () {
-        Route::get('home', 'HomeController@index')->middleware('admin.auth');
+        Route::get('home', 'HomeController@index');
 
         Route::group(['middleware' => 'admin.guest'], function () {
             Route::get('/', 'Auth\LoginController@showLoginForm');
@@ -41,24 +41,28 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/product/saveProperties', 'ProductController@saveProperties')->name('product.saveProperties');
         Route::post('/product/search', 'ProductController@search')->name('product.search');
         Route::resource('/product', 'ProductController');
+		Route::resource('/admins', 'AdminsController');
 
         //Route::resource('/productproperty', 'ProductPropertyController');
     });
 });
-
-Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'middleware' => 'guest'], function () {
-    Route::get('login', 'LoginController@showLoginForm');
-    Route::post('login', 'LoginController@login');
-    Route::get('register', 'RegisterController@showRegistrationForm');
-    Route::post('register', 'RegisterController@register');
-    Route::post('logout', 'LoginController@logout'); // GUEST middleware???
+Route::post('logout', 'Auth\LoginController@logout')->name('logout'); // GUEST middleware???
+Route::group(['namespace' => 'Auth', 'prefix' => '', 'middleware' => 'guest'], function () {
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login')->name('login');
+    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'RegisterController@register')->name('register');
 });
 
 Route::group(['namespace' => 'Customer', 'prefix' => '' ], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/category/{id}', 'CategoryController@show')->name('category.show');
-    Route::resource('carts', 'CartController', ['except' => ['destroy']]);
+    Route::resource('billing', 'BillingController', ['only' => ['store']]);
+    Route::resource('carts', 'CartController', ['except' => ['destroy', 'show']]);
     Route::post('carts/destroy', 'CartController@destroy');
+    Route::post('carts/update-cart', 'CartController@updateCart');
+	Route::resource('products', 'ProductsController');
+	Route::resource('comments', 'CommentsController');
 
 });
 
