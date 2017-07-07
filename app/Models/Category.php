@@ -176,7 +176,7 @@ class Category extends Model
     {
         $categories = Category::orderBy('position', 'ASC')->get();
 
-        $options = static::recursive($categories);
+        $options = static::recursiveCategoriesKeyId($categories);
 
         return static::recursiveParentCategoriesById($options, $id);
     }

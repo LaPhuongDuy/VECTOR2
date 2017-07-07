@@ -15,8 +15,6 @@ class HomeController extends Controller
         $highProducts = Product::where('score', '>', 3)->take(8)->get();
 
         $samsung = Product::where('brand_id', 1)->take(8)->get();
-        //dd($bestSellers);
-        /*$ = Product::orderBy('created_at', 'desc')->paginate(config('common.unit.paginate-product'));*/
 
         return view('customers.home.home', compact(
             'lastestProducts',

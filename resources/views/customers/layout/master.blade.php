@@ -27,7 +27,8 @@
 </head>
 <body>
     @include('customers.layout.sections.header')
-    @include('customers.layout.sections.navbar')
+    {{--@include('customers.layout.sections.navbar')--}}
+    @stack('nav')
     @yield('content')
     @yield('related')
     @include('customers.layout.sections.footer')
