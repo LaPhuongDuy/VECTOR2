@@ -21,10 +21,12 @@
                 </a></h6>
                 <small>Review by <span>Leslie Prichard on </span><span class="time-comment">{{ $comment->created_at }}</span></small>
             </div>
+            @if (Auth::id() == $comment->user_id)
             <div class="col-lg-1">
                 <i data-edit="{{ route('comments.update', $comment->id) }}" class="glyphicon glyphicon-pencil edit-comment" style="color: blue; right: 22px; cursor:pointer; "></i>
                 <i data-delete="{{ route('comments.destroy', $comment->id) }}" class="glyphicon glyphicon-trash delete-comment" style="color: red; left: 10px; cursor:pointer;" ></i>
             </div>
+            @endif
         </div>
         <div id="comment-content-{{ $comment->id }}" class="review-txt comment-textarea">{{ $comment->content }}</div>
     </div>

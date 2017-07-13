@@ -12,8 +12,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         $cates = Category::getAllParentCategoriesById($id);
-        //$childrenId = array_keys(Category::getChildrenByParentId($id));
-        //dd(Product::whereIn('category_id', $childrenId)->count());
-        return view('customers.category_product.index', compact('id', 'cates'));
+
+        $products = Product::whereIn('category_id', array_keys(Category::getLastChildByParentId($id)))->paginate(12);
+
+        return view('customers.category_product.index', compact('id', 'cates', 'products'));
     }
 }

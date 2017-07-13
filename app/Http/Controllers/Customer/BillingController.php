@@ -17,6 +17,10 @@ use App\Jobs\SendMail;
 
 class BillingController extends Controller
 {
+    /**
+     * @param OrderRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(OrderRequest $request)
     {
         $province = Province::find($request->provinces)->name;
@@ -29,9 +33,9 @@ class BillingController extends Controller
             'phone' => $request->phone,
             'note' => $request->note,
         ]);
-
-        // $job = (new SendMail($request->email))->delay(Carbon::now()->addSeconds(5));
-        // dispatch($job);
+        Cart::destroy();
+//         $job = (new SendMail($request->email))->delay(Carbon::now()->addSeconds(5));
+//         dispatch($job);
         //     $info = Cart::content();
         //     Mail::send('welcome', [], function ($message) {
         //     $message->from('lashop1221@gmail.com')->subject('Orders');
@@ -40,6 +44,6 @@ class BillingController extends Controller
         // Mail::to('andrantran@gmail.com')->send(new SendMail);
         // $when = Carbon::now()->addMinutes(5);
         // Mail::to('andrantran@gmail.com')->later($when, new SendMail);
-        return back()->with('status', 'Order Successed');
+        return redirect()->route('home');
     }
 }

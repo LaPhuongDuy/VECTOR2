@@ -10,6 +10,7 @@
 @endpush
 @push('styles')
     {!! Html::style('assets/plugins/toastr/toastr.min.css') !!}
+
 @endpush
 @section('content')
     @include('customers.layout.sections.slideshow')

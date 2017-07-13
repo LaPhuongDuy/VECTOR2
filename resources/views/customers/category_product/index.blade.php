@@ -7,6 +7,22 @@
 @endpush
 @push('scripts')
 {!! Html::script('assets/plugins/sweetalert/sweetalert.min.js') !!}
+
+{!! Html::script('assets/js/jquery.pjax.js') !!}
+<script type="text/javascript">
+    $(function(){
+        // pjax
+        $(document).pjax('.pages ul li a', '#productGrid')
+    })
+    $(document).ready(function(){
+
+        // does current browser support PJAX
+        if ($.support.pjax) {
+            $.pjax.defaults.timeout = 2000; // time in milliseconds
+        }
+
+    });
+</script>
 @endpush
 @push('styles')
 {!! Html::style('assets/plugins/toastr/toastr.min.css') !!}
@@ -26,9 +42,9 @@
     <section class="main-container col2-left-layout">
         <div class="main container">
             <div class="row">
-                <section class="col-main col-sm-9 col-sm-push-3 wow">
+                <section class="col-main col-sm-9 col-sm-push-3 wow" id="categoryPage">
                     <div class="category-title">
-                        <h1>{{ \App\Models\Category::find($id)->name }}</h1>
+                        <h1>Tops &amp; Tees</h1>
                     </div>
                     <!-- category banner -->
                     <div class="category-description std">
@@ -39,23 +55,60 @@
                                     <!-- Item -->
                                     <div class="item"> <a href="#"><img alt="category-banner" src="{{ url('assets/images/category-banner-img.jpg') }}"></a>
                                         <div class="cat-img-title cat-bg cat-box">
-                                            <h2 class="cat-heading">Choose your wines</h2>
+                                            <h2 class="cat-heading">New Fashion 2015</h2>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus diam arcu.</p>
                                         </div>
                                     </div>
                                     <!-- End Item -->
+
+                                    <!-- Item -->
+                                    <div class="item"> <a href="#x"><img alt="category-banner" src="{{ url('assets/images/category-banner-img1.jpg') }}"></a> </div>
+                                    <!-- End Item -->
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- category banner -->
-                    <div class="category-products">
+                    <div class="category-products"  id="productGrid">
                         <div class="toolbar">
-                            <div class="col-md-3 col-md-offset-5">
-                                {{--{{ $products->links() }}--}}
+                            <div class="sorter">
+                                <div class="view-mode"> <span title="Grid" class="button button-active button-grid">Grid</span><a href="list.html" title="List" class="button button-list">List</a> </div>
+                            </div>
+                            <div id="sort-by">
+                                <label class="left">Sort By: </label>
+                                <ul>
+                                    <li><a href="#">Position<span class="right-arrow"></span></a>
+                                        <ul>
+                                            <li><a href="#">Name</a></li>
+                                            <li><a href="#">Price</a></li>
+                                            <li><a href="#">Position</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <a class="button-asc left" href="#" title="Set Descending Direction"><span style="color:#999;font-size:11px;" class="glyphicon glyphicon-arrow-up"></span></a> </div>
+                            <div class="pager" style="width: 60%">
+                                <div id="limiter">
+                                    <label>View: </label>
+                                    <ul>
+                                        <li><a href="#">15<span class="right-arrow"></span></a>
+                                            <ul>
+                                                <li><a href="#">20</a></li>
+                                                <li><a href="#">30</a></li>
+                                                <li><a href="#">35</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pages" style="text-align: center">
+                                    <label>Page:</label>
+                                    {{ $products->links() }}
+                                </div>
                             </div>
                         </div>
-                        {{--@include('user.layouts.section.app_blockCategoryProduct')--}}
+                        <ul class="products-grid">
+                            @each('customers.category_product.item.product', $products, 'product')
+                        </ul>
                     </div>
                 </section>
                 <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow">

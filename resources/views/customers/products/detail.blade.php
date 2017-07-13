@@ -2,6 +2,9 @@
 @section('title')
 <title>Home</title>
 @endsection
+@push('nav')
+@include('customers.layout.sections.navbar')
+@endpush
 @section('content')
 <section class="main-container col1-layout">
     <div class="main container">
@@ -22,8 +25,7 @@
                                 <div class="moreview-control"> <a style="right: 42px;" href="javascript:void(0)" class="moreview-prev"></a> <a style="right: 42px;" href="javascript:void(0)" class="moreview-next"></a> </div>
                             </div>
                             
-                            <!-- end: more-images -->
-                            
+
                             <div class="product-shop col-lg-6 col-sm-6 col-xs-12">
                                 <div class="product-next-prev"> <a class="product-next" href="#"><span></span></a> <a class="product-prev" href="#"><span></span></a> </div>
                                 <div class="product-name">
@@ -38,8 +40,12 @@
                                 <p class="availability in-stock"><span>In Stock</span></p>
                                 <div class="price-block">
                                     <div class="price-box">
-                                        <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $315.99 </span> </p>
-                                        <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{ $product->price }}$ </span> </p>
+                                        @if($product->price != 0)
+                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> ${{ $product->price }}.00 </span> </p>
+                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> ${{ $product->sale_price }}.00 </span> </p>
+                                        @else
+                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> ${{ $product->price }}.00 </span> </p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="short-description">
@@ -135,25 +141,25 @@
                                         <div class="related-pro wow">
                                             <div class="slider-items-products">
                                                 <div class="new_title center">
-                                                    <h2>Related Products</h2>
+                                                    <h2>Products same category</h2>
                                                 </div>
                                                 <div id="related-products-slider" class="product-flexslider hidden-buttons">
                                                     <div class="slider-items slider-width-col4">
-                                                        
-                                                        @include('customers.products.sections.sameproduct')
-                                                        
+                                                     @foreach (\App\Models\Product::where('category_id', $product->category_id)->get() as $product)
+                                                        @include('customers.products.sections.sameproduct', ['product' => $product])
+                                                     @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="upsell-pro wow">
-                                            <div class="slider-items-products">
-                                                <div class="new_title center">
-                                                    <h2>Upsell Products</h2>
-                                                </div>
-                                                @include('customers.products.sections.upsellproduct')
-                                            </div>
-                                        </div>
+                                        {{--<div class="upsell-pro wow">--}}
+                                            {{--<div class="slider-items-products">--}}
+                                                {{--<div class="new_title center">--}}
+                                                    {{--<h2>Upsell Products</h2>--}}
+                                                {{--</div>--}}
+                                                {{--@include('customers.products.sections.upsellproduct')--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
                                     </div>
                                 </div>
                             </div>

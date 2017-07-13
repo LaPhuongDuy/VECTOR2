@@ -20,7 +20,7 @@
         </div>
         <div class="info">
             <div class="info-inner">
-                <div class="item-title"> <a title=" Sample Product" href="product_detail.html"> {{ $product->name }} </a> </div>
+                <div class="item-title"> <a title=" Sample Product" href="{{ route('products.show', $product->id) }}"> {{ $product->name }} </a> </div>
                 <!--item-title-->
                 <div class="item-content">
                     <div class="ratings">

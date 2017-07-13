@@ -33,8 +33,8 @@ class SendMail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::send('welcome', [], function ($message) {
-            $message->from(config('commom.mail'))->subject('Orders Detail');
+        Mail::send('customers.email.order', ['test' => 'name'], function ($message) {
+            $message->from(config('lashop1221@gmail.com'))->subject('Orders Detail');
             $message->to($this->user);
         });
     }
