@@ -1,5 +1,7 @@
 @extends('customers.layout.master')
-
+@push('nav')
+@include('customers.layout.sections.navbar')
+@endpush
 @section('content')
     <section class="main-container col1-layout">
         <div class="main container">

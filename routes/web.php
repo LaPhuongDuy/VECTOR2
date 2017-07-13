@@ -42,7 +42,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/product/search', 'ProductController@search')->name('product.search');
         Route::resource('/product', 'ProductController');
 		Route::resource('/admins', 'AdminsController');
-
         //Route::resource('/productproperty', 'ProductPropertyController');
     });
 });
@@ -63,7 +62,12 @@ Route::group(['namespace' => 'Customer', 'prefix' => '' ], function () {
     Route::post('carts/update-cart', 'CartController@updateCart');
 	Route::resource('products', 'ProductsController');
 	Route::resource('comments', 'CommentsController');
-
 });
+
+Route::get('/pjax', 'PjaxController@index');
+Route::get('/trang1', 'PjaxController@trang1');
+Route::get('/trang2', 'PjaxController@trang2');
+Route::get('/trang3', 'PjaxController@trang3');
+
 
 

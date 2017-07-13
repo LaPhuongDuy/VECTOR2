@@ -39,7 +39,6 @@
         </tr>
     </tfoot>
     <tbody id="cartContent">
-    {{ Form::open(['action' => 'Customer\CartController@updateCart', 'method' => 'POST']) }}
         @foreach(Cart::content() as $key => $item)
         <tr class="first odd cartItem">
             <td class="image"><a class="product-image" title="Sample Product" href="#/women-s-crepe-printed-black/">
@@ -69,7 +68,6 @@
             </td>
         </tr>
         @endforeach
-    {{ Form::close() }}
     </tbody>
 </table>
 {{ Form::close() }}

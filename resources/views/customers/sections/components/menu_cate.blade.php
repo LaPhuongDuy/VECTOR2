@@ -2,7 +2,7 @@
     @if ($category['level'] == 0)
         {{ ($category['id'] == $id) }}
         <li class="level0 nav-5 level-top first">
-            <a href="{{ route('category.show', $category['id']) }}" class="level-top {{ ($category['id'] == $id) ? 'active' : ''}}">
+            <a href="{{ route('category.show', $category['id']) }}" class="level-top {{ ($category['id'] == $id || array_key_exists($category['id'], $cates)) ? 'active' : ''}}">
                 <span>{{ $category['name'] }}</span> </a>
             <div class="level0-wrapper dropdown-6col" style="display:none;">
                 <div class="level0-wrapper2">
