@@ -18,4 +18,9 @@ class ProductProperty extends Model
     {
         return $this->belongsTo(Property::class);
     }
+
+    public function scopeSearchByColumn($query, $column, $array)
+    {
+        return $query->whereIn($column, $array);
+    }
 }

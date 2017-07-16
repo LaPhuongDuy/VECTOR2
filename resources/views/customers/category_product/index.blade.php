@@ -34,7 +34,7 @@
                 <ul>
                     <li class="home"> <a href="index.html" title="Go to Home Page">Home</a><span>—›</span></li>
                     <li class=""> <a href="grid.html" title="Go to Home Page">Women</a><span>—›</span></li>
-                    <li class="category13"><strong>Tops &amp; Tees</strong></li>
+                    <li class="category13"><strong></strong></li>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,8 @@
             <div class="row">
                 <section class="col-main col-sm-9 col-sm-push-3 wow" id="categoryPage">
                     <div class="category-title">
-                        <h1>Tops &amp; Tees</h1>
+                        <h1>
+                        </h1>
                     </div>
                     <!-- category banner -->
                     <div class="category-description std">
@@ -118,6 +119,22 @@
                             <ul>
                                 @include('customers.category_product.component.aside_category',['categories' => $categoriesMenu])
                             </ul>
+                        </div>
+                    </div>
+                    <div class="block block-layered-nav">
+                        <div class="block-title"><span>Shop By</span></div>
+                        <div class="block-content">
+                          <p class="block-subtitle">Shopping Options</p>
+                          <dl id="narrow-by-list">
+                            <dt class="even">Manufacturer</dt>
+                            <dd class="even">
+                                <ol>
+                                    @foreach ($brands as $brand)
+                                        <li><a>{{ $brand }}</a></li>
+                                    @endforeach
+                                </ol>
+                            </dd>
+                          </dl>
                         </div>
                     </div>
                 </aside>

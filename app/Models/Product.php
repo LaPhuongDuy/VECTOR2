@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\BaseModel;
 
-class Product extends Model
+class Product extends BaseModel
 {
     use SoftDeletes;
 
@@ -75,5 +76,10 @@ class Product extends Model
     public function getImageAttribute($image)
     {
         return url('assets/images/products-images') . '/' . $image;
+    }
+
+    public function scopeSearchByColumn($query, $column, $array)
+    {
+        return $query->whereIn($column, $array);
     }
 }
