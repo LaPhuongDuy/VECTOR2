@@ -20,7 +20,7 @@
 
 
 
-    {!! Html::script('assets/js/jquery.min.js') !!}
+    {!! Html::script('assets/js/customer.min.js') !!}
     {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js') !!}
         @yield('css')
         @stack('styles')
@@ -33,9 +33,10 @@
 
 </head>
 <body id="body">
-<div style="background-color: rgb(119, 119, 119); opacity: 0.7; cursor: pointer; height: 100%; display: block; padding: 0; position: fixed;" id="fancybox-overlay"></div>
-<div style="width: 1190px; height: auto; top: 20%; left: 25%; display: block; position: fixed;" id="fancybox-wrap">
-    <div id="fancybox-outer">
+
+<!-- <div style="background-color: rgb(119, 119, 119); opacity: 0.7; cursor: pointer; height: 100%; display: block; padding: 0; position: fixed;" id="fancybox-overlay"></div> -->
+<!-- <div style="width: 1190px; height: auto; top: 20%; left: 25%; display: block; position: fixed;" id="fancybox-wrap"> -->
+    <!-- <div id="fancybox-outer">
         <div style="border-width: 10px; width: 1170px; height: auto;" id="fancybox-content">
             <div style="width:auto;height:auto;overflow: auto;position:relative;">
                 <div class="product-view">
@@ -51,11 +52,11 @@
                                     <li class="moreview_thumb thumb_6"> <img class="moreview_thumb_image" src="products-images/product8.jpg"> <img class="moreview_source_image" src="products-images/product8.jpg" alt=""> <span class="roll-over">Roll over image to zoom in</span> <img style="position: absolute;" class="zoomImg" src="products-images/product8.jpg"></li>
                                 </ul>
                                 <div class="moreview-control"> <a style="right: 42px;" href="javascript:void(0)" class="moreview-prev"></a> <a style="right: 42px;" href="javascript:void(0)" class="moreview-next"></a> </div>
-                            </div>
+                            </div> -->
 
                             <!-- end: more-images -->
 
-                            <div class="product-shop col-lg-6 col-sm-6 col-xs-12">
+                            <!-- <div class="product-shop col-lg-6 col-sm-6 col-xs-12">
                                 <div class="product-name">
                                     <h1>Waistcoat with Horizontal Stripes</h1>
                                 </div>
@@ -99,13 +100,13 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
                 <!--product-view-->
 
-            </div>
+           <!--  </div>
         </div>
         <a style="display: inline;" id="fancybox-close" href="index.html"></a> </div>
-</div>
+</div> -->
     @include('customers.layout.sections.header')
     {{--@include('customers.layout.sections.navbar')--}}
     @stack('nav')
@@ -113,7 +114,7 @@
     @yield('related')
     @include('customers.layout.sections.footer')
     @include('customers.layout.sections.social')
-    {!! Html::script('assets/js/customer.min.js') !!}
+    
     <script type='text/javascript'>
         jQuery(document).ready(function(){
         jQuery('#rev_slider_4').show().revolution({

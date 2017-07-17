@@ -62,12 +62,19 @@ Route::group(['namespace' => 'Customer', 'prefix' => '' ], function () {
     Route::post('carts/update-cart', 'CartController@updateCart');
 	Route::resource('products', 'ProductsController');
 	Route::resource('comments', 'CommentsController');
+
+    //search
+    Route::get('catalog', 'ProductSearchController@search')->name('search.catalog');
+    Route::get('search/{name}/', 'ProductSearchController@searchByName')->name('search.name');
+    Route::get('{category}/{brand}/', 'ProductSearchController@searchGeneral')->name('general.search');
+    Route::get('/home/search/list', 'ProductSearchController@searchList')->name('search.list');
 });
 
 Route::get('/pjax', 'PjaxController@index');
 Route::get('/trang1', 'PjaxController@trang1');
 Route::get('/trang2', 'PjaxController@trang2');
 Route::get('/trang3', 'PjaxController@trang3');
+
 
 
 
